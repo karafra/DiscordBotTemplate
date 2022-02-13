@@ -1,6 +1,6 @@
 version: "3.9"
 services:
     bot:
-      build: .
+      build: Bot
       ports:
         - 9195:9195
