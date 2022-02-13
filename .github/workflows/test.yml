@@ -1,4 +1,4 @@
-name: Tets and publish to Codecov.
+name: Test and publish to Codecov.
 
 on:
   push:
@@ -21,7 +21,7 @@ jobs:
       with:
         reports: '*Test*/TestResults/*/coverage.cobertura.xml'
         targetdir: 'CoverageReports'
-        reporttypes: 'HtmlInline;Cobertura;lcov'
+        reporttypes: 'HtmlInline;Cobertura;lcov;Xml;XmlSummary'
         verbosity: 'Verbose'
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
