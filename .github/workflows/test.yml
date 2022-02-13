@@ -28,13 +28,11 @@ jobs:
       with:
         name: CoverageReports        
         path: CoverageReports
-    - name: haha
-      run: cd CoverageReports && ls
     - name: Upload to codecov
       uses: codecov/codecov-action@v2
       with:
         token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
-        directory: CoverageReports**
+        files: CoverageReports/Cobertura.xml 
         dry_run: true
         name: codecov-umbrella # optional
         fail_ci_if_error: true # optional (default = false)
