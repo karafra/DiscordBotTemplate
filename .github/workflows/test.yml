@@ -34,7 +34,7 @@ jobs:
       uses: codecov/codecov-action@v2
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
-        files: CoverageReports/lcov.xml 
+        files: CoverageReports/Summary.xml 
         dry_run: false
         name: codecov-umbrella
         fail_ci_if_error: true
