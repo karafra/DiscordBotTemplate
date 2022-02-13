@@ -21,7 +21,7 @@ jobs:
       with:
         reports: '*Test*/TestResults/*/coverage.cobertura.xml'
         targetdir: 'CoverageReports'
-        reporttypes: 'HtmlInline;Cobertura'
+        reporttypes: 'HtmlInline;Cobertura;lcov'
         verbosity: 'Verbose'
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
@@ -32,7 +32,7 @@ jobs:
       uses: codecov/codecov-action@v2
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
-        files: CoverageReports/Cobertura.xml 
+        files: CoverageReports/lcov.xml 
         dry_run: false
         name: codecov-umbrella
         fail_ci_if_error: true
