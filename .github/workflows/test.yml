@@ -31,11 +31,10 @@ jobs:
     - name: Upload to codecov
       uses: codecov/codecov-action@v2
       with:
-        token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+        token: ${{ secrets.CODECOV_TOKEN }}
         files: CoverageReports/Cobertura.xml 
-        dry_run: true
-        name: codecov-umbrella # optional
-        fail_ci_if_error: true # optional (default = false)
-        verbose: true # optional (default = false)
-
+        dry_run: false
+        name: codecov-umbrella
+        fail_ci_if_error: true
+        verbose: true
  
