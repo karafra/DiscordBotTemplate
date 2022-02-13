@@ -28,6 +28,8 @@ jobs:
       with:
         name: CoverageReports        
         path: CoverageReports
+    - name: List files
+      run: cd CoverageReports && ls && cd ..
     - name: Upload to codecov
       uses: codecov/codecov-action@v2
       with:
