@@ -2,20 +2,42 @@ name: Tets and publish to Codecov.
 
 on:
   push:
-    branches:
-      - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v1.7.2
-        with:
-         dotnet-version: 6.0.x
-      - name: Build with dotnet
-        run: dotnet build --configuration Release
-      - name: Run unit tests
-        run: dotnet test --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=json,cobertura,lcov,teamcity,opencover dotnet test --filter FullyQualifiedName\!~Bot
-      
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.100
+    - name: Build with dotnet
+      run: dotnet build
+    - name: Run tests with coverage
+      run: dotnet test --no-build --collect:"XPlat Code Coverage"
+    - name: ReportGenerator
+      uses: danielpalme/ReportGenerator-GitHub-Action@5.0.0
+      with:
+        reports: '*Test*/TestResults/*/coverage.cobertura.xml'
+        targetdir: 'CoverageReports'
+        reporttypes: 'HtmlInline;Cobertura'
+        verbosity: 'Verbose'
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: CoverageReports        
+        path: CoverageReports
+
+    - name: Upload to codecov
+    - uses: codecov/codecov-action@v2
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+        directory: Tests/TestResults/**
+        dry_run: true
+        name: codecov-umbrella # optional
+        fail_ci_if_error: true # optional (default = false)
+        verbose: true # optional (default = false)
+
+ 
