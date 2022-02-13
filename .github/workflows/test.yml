@@ -1,4 +1,4 @@
-name: Tets and publish to codecov.
+name: Tets and publish to Codecov.
 
 on:
   push:
@@ -13,7 +13,7 @@ jobs:
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1.7.2
         with:
-         dotnet-version: 6.0
+         dotnet-version: 6.0.x
       - name: Build with dotnet
         run: dotnet build --configuration Release
       - name: Run unit tests
