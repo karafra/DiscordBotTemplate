@@ -17,5 +17,5 @@ jobs:
       - name: Build with dotnet
         run: dotnet build --configuration Release
       - name: Run unit tests
-        run: dotnet test --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=json,cobertura,lcov,teamcity,opencover
+        run: dotnet test --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=json,cobertura,lcov,teamcity,opencover dotnet test --filter FullyQualifiedName\!~Bot
       
