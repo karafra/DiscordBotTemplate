@@ -1,19 +1,42 @@
-name: Test and publish to Codecov.
+name: '.NET Core Build'
 
-on:
+on: 
   push:
-
+  workflow_dispatch:
+  
 jobs:
   build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v2
+      - run: echo ${{matrix.os}}
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1.7.2
+        with:
+         dotnet-version: 6.0.x
+      - name: Build with dotnet
+        run: dotnet build --configuration Release
+      - name: Cache build and dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.nuget/packages
+            !~/.nuget/packages/unwanted
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
+  run_unit_tests:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 6.0.100
-    - name: Build with dotnet
-      run: dotnet build
+        dotnet-version: 6.0.x
     - name: Run tests with coverage
       run: dotnet test --no-build --collect:"XPlat Code Coverage"
     - name: ReportGenerator
@@ -30,7 +53,7 @@ jobs:
         path: CoverageReports
     - name: List files
       run: cd CoverageReports && ls && cd ..
-    - name: Upload to codecov
+    - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v2
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
