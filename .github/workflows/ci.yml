@@ -24,7 +24,6 @@ jobs:
         with:
           path: |
             ~/.nuget/packages
-            !~/.nuget/packages/unwanted
           key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
           restore-keys: |
             ${{ runner.os }}-nuget-
@@ -38,8 +37,10 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 6.0.x
-    - name: Restore project from cache
+    - name: Restore projects
       run: dotnet restore
+    - name: Build project
+      run: dotnet build
     - name: Run tests with coverage
       run: dotnet test --no-build --collect:"XPlat Code Coverage"
     - name: ReportGenerator
