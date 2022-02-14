@@ -30,6 +30,7 @@ jobs:
             ${{ runner.os }}-nuget-
 
   run_unit_tests:
+    needs: build
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
