@@ -21,7 +21,7 @@ jobs:
       with:
         reports: '*Test*/TestResults/*/coverage.cobertura.xml'
         targetdir: 'CoverageReports'
-        reporttypes: 'HtmlInline;Cobertura;lcov;Xml;XmlSummary'
+        reporttypes: 'HtmlInline;Cobertura'
         verbosity: 'Verbose'
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
