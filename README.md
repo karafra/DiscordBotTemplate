@@ -5,7 +5,6 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
 [![Codecov][codecov-badge]][codecov]
 
 
@@ -165,9 +164,7 @@ Project Link: [https://github.com/karafra/DiscordBotTemplate](https://github.com
 [issues-shield]: https://img.shields.io/github/issues/karafra/DiscordBotTemplate.svg?style=for-the-badge
 [issues-url]: https://github.com/karafra/DiscordBotTemplate/issues
 [license-shield]: https://img.shields.io/github/license/karafra/DiscordBotTemplate.svg?style=for-the-badge
-[license-url]: https://github.com/karafra/DiscordBotTemplate/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
+[license-url]: https://github.com/karafra/DiscordBotTemplate/blob/master/LICENSE
 [product-screenshot]: images/screenshot.png
 [codecov-badge]: https://img.shields.io/codecov/c/github/karafra/DiscordBotTemplate?style=for-the-badge&token=xhoPsrVNCX
 [codecov]: https://app.codecov.io/gh/karafra/DiscordBotTemplate/
