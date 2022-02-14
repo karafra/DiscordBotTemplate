@@ -42,10 +42,11 @@ jobs:
     - name: ReportGenerator
       uses: danielpalme/ReportGenerator-GitHub-Action@5.0.0
       with:
-        reports: '*Test*/TestResults/*/coverage/Cobertura.xml'
+        reports: 'Tests/TestResults/**/coverage.cobertura.xml'
         targetdir: 'CoverageReports'
         reporttypes: 'HtmlInline;Cobertura'
         verbosity: 'Verbose'
+        toolpath: 'reportgeneratortool'
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
