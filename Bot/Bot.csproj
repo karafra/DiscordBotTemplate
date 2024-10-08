@@ -14,7 +14,7 @@
     <PackageReference Include="DSharpPlus" Version="4.5.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
     <PackageReference Include="NetEscapades.Configuration.Yaml" Version="3.1.0" />
     <None Update="_config.yml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
